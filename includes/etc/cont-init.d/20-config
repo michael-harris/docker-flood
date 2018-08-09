@@ -1,13 +1,13 @@
 #!/usr/bin/with-contenv bash
 
-
-
 # make folders
-mkdir -p /config/flood
-
+[[ ! -d /config/flood ]] && mkdir -p /config/flood
+[[ ! -e /config/flood/config.js ]] && cp /default/config.js /config/flood/config.js
 [[ ! -L /usr/flood/config.js ]] && ln -s /config/flood/config.js /usr/flood/config.js && sed -i -e "s|<FLOOD_SECRET>|$FLOOD_SECRET|g" /config/flood/config.js && sed -i -e "s|<CONTEXT_PATH>|$CONTEXT_PATH|g" /config/flood/config.js
 
 #fix permissions
 chown -R abc:abc /config/flood
+chmod 755 /usr/local/bin/curl
+chown abc:abc /downloads
 
 usermod -s /bin/bash abc

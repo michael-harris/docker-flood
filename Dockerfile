@@ -103,6 +103,9 @@ rm -rf /tmp/* && \
 # create home folder
 mkdir /home/torrent     
 
+# add default config file
+COPY includes/ /
+
 # ports and volumes
 EXPOSE 3000 
 VOLUME /config /downloads /socket

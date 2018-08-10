@@ -99,9 +99,10 @@ cd /usr/flood && \
 # cleanup
 apk del --purge build-dependencies && \
 apk del -X http://dl-cdn.alpinelinux.org/alpine/v3.6/main cppunit-dev && \
-rm -rf /tmp/* && \
-# create home folder
-mkdir /home/torrent     
+rm -rf /tmp/*
+
+# install default config
+COPY includes/ /
 
 # add default config file
 COPY includes/ /
